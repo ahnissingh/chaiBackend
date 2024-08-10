@@ -24,7 +24,7 @@ const registerUser = asyncHandler(
         )) {
       throw new ApiError(StatusCodes.BAD_REQUEST, ReasonPhrases.PARTIAL_CONTENT);
     }
-    const getUserByIdOrUsername = User.findOne({
+    const getUserByIdOrUsername = await User.findOne({
         $or: [{ username }, { email }],
       },
     );
